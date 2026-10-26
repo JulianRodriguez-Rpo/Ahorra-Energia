@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta de hábitos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <!-- Estilos propios: van DESPUES de Bootstrap para poder cambiar su aspecto -->
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="container py-3">
+    <header class="encabezado p-4 mb-4 bg-primary text-white rounded-4 shadow">
+        <h1>Encuesta de hábitos de energía</h1>
+        <p>Cuéntenos cómo usa la energía su familia. Los campos con asterisco (*) son obligatorios.</p>
+        <nav class="nav nav-pills">
+            <a class="nav-link text-white" href="index.html">Inicio</a>
+            <a class="nav-link text-white" href="equipos.html">Equipos de mi casa</a>
+            <a class="nav-link text-white" href="mi-factura.html">Mi factura</a>
+            <a class="nav-link text-white" href="registro.html">Registrar un equipo</a>
+            <a class="nav-link text-white active" href="encuesta.html">Encuesta</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="alert alert-primary" role="alert">
+            Responder toma unos 2 minutos. Sus respuestas nos ayudan a entender cómo se usa la energía en casa.
+        </div>
+        <!-- method="get": los datos viajan en la URL; action: la misma página, porque no hay servidor -->
+        <form action="encuesta.html" method="get">
+
+            <fieldset class="border rounded p-3 mb-3">
+                <legend>Datos de la familia <span class="badge text-bg-primary">4 preguntas</span></legend>
+
+                <p>
+                    <label for="nombre">Nombre de quien responde: *</label>
+                    <input class="form-control" type="text" id="nombre" name="nombre" required placeholder="Ej.: Ana Gómez">
+                </p>
+
+                <p>
+                    <label for="correo">Correo electrónico: *</label>
+                    <input class="form-control" type="email" id="correo" name="correo" required placeholder="nombre@correo.com">
+                </p>
+
+                <p>
+                    <label for="personas">Personas que viven en la casa: *</label>
+                    <input class="form-control" type="number" id="personas" name="personas" min="1" max="15" required>
+                </p>
+
+                <p>
+                    <label for="estrato">Estrato de la vivienda: *</label>
+                    <select class="form-select" id="estrato" name="estrato" required>
+                        <option value="">Seleccione una opción</option>
+                        <option value="1">Estrato 1</option>
+                        <option value="2">Estrato 2</option>
+                        <option value="3">Estrato 3</option>
+                        <option value="4">Estrato 4</option>
+                        <option value="5">Estrato 5</option>
+                        <option value="6">Estrato 6</option>
+                    </select>
+                </p>
+            </fieldset>
+
+            <fieldset class="border rounded p-3 mb-3">
+                <legend>Consumo de energía <span class="badge text-bg-primary">4 preguntas</span></legend>
+
+                <p>
+                    <label for="kwh">kWh que consumieron el último mes (según la factura): *</label>
+                    <input class="form-control" type="number" id="kwh" name="kwh" min="0" max="2000" required>
+                </p>
+
+                <p>
+                    <label for="horas">Horas al día que se usa el televisor:</label>
+                    <input class="form-control" type="number" id="horas" name="horas" min="0" max="24" step="0.5">
+                </p>
+
+                <div class="mb-3">
+                    <label for="preocupacion" class="d-block">¿Cuánto le preocupa el costo de la energía? (0 = nada, 10 = muchísimo)</label>
+                    <!-- output: muestra el valor actual de la barra; el script de abajo lo actualiza -->
+                    <p class="text-center my-1">
+                        <output id="valorPreocupacion" for="preocupacion" class="badge text-bg-primary fs-5">5</output>
+                    </p>
+                    <input class="form-range" type="range" id="preocupacion" name="preocupacion" min="0" max="10" step="1" value="5">
+                    <div class="d-flex justify-content-between small text-muted">
+                        <span>0 · Nada</span>
+                        <span>10 · Muchísimo</span>
+                    </div>
+                </div>
+
+                <p>¿Revisa su factura de energía? *</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="revisa-siempre" name="revisa" value="siempre" required>
+                    <label class="form-check-label" for="revisa-siempre">Todos los meses</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="revisa-a-veces" name="revisa" value="a_veces">
+                    <label class="form-check-label" for="revisa-a-veces">A veces</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="revisa-nunca" name="revisa" value="nunca">
+                    <label class="form-check-label" for="revisa-nunca">Casi nunca</label>
+                </div>
+            </fieldset>
+
+            <fieldset class="border rounded p-3 mb-3">
+                <legend>Hábitos de ahorro <span class="badge text-bg-primary">2 preguntas</span></legend>
+
+                <p>¿Qué hace su familia para ahorrar energía? (marque todas las que apliquen)</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="luces" name="habitos" value="apagar_luces">
+                    <label class="form-check-label" for="luces">Apaga las luces que no usa</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="desconectar" name="habitos" value="desconectar">
+                    <label class="form-check-label" for="desconectar">Desconecta los equipos que no usa</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="led" name="habitos" value="bombillos_led">
+                    <label class="form-check-label" for="led">Usa bombillos LED</label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="planchar" name="habitos" value="planchar_junto">
+                    <label class="form-check-label" for="planchar">Plancha toda la ropa en una sola tanda</label>
+                </div>
+
+                <p>
+                    <label for="comentarios">¿Qué otra medida podría tomar su familia para ahorrar?</label>
+                    <textarea class="form-control" id="comentarios" name="comentarios" rows="3" placeholder="Escriba sus ideas aquí"></textarea>
+                </p>
+            </fieldset>
+
+            <button class="btn btn-primary" type="submit">Enviar encuesta</button>
+            <button class="btn btn-secondary" type="reset">Borrar</button>
+        </form>
+    </main>
+
+    <footer class="mt-4 text-muted">
+        <p>Ingeniería Web I · IU Digital de Antioquia · 2026-2</p>
+    </footer>
+
+    <!-- Script: cada vez que se mueve la barra, copia su valor al contador -->
+    <script>
+        const rango = document.getElementById("preocupacion");
+        const salida = document.getElementById("valorPreocupacion");
+        rango.addEventListener("input", function () {
+            salida.textContent = rango.value;
+        });
+        // Al presionar "Borrar", la barra vuelve a 5 y el contador también
+        document.querySelector("form").addEventListener("reset", function () {
+            setTimeout(function () { salida.textContent = rango.value; }, 0);
+        });
+    </script>
+</body>
+</html>

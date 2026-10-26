@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi factura</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <!-- Estilos propios: van DESPUES de Bootstrap para poder cambiar su aspecto -->
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="container py-3">
+    <header class="encabezado p-4 mb-4 bg-primary text-white rounded-4 shadow">
+        <h1>Mi factura</h1>
+        <p>Datos de mi factura de energía: periodo del 2 de septiembre al 2 de octubre de 2026 (31 días).</p>
+        <nav class="nav nav-pills">
+            <a class="nav-link text-white" href="index.html">Inicio</a>
+            <a class="nav-link text-white" href="equipos.html">Equipos de mi casa</a>
+            <a class="nav-link text-white active" href="mi-factura.html">Mi factura</a>
+            <a class="nav-link text-white" href="registro.html">Registrar un equipo</a>
+            <a class="nav-link text-white" href="encuesta.html">Encuesta</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>La factura de energía</h2>
+            <div class="row g-3 mb-4">
+                <div class="col-6 col-lg-3"><div class="card dato h-100 text-center"><div class="card-body">
+                    <p class="valor">147</p><p class="mb-0">kWh consumidos en el mes</p>
+                </div></div></div>
+                <div class="col-6 col-lg-3"><div class="card dato h-100 text-center"><div class="card-body">
+                    <p class="valor">958,38</p><p class="mb-0">COP por kWh (tarifa)</p>
+                </div></div></div>
+                <div class="col-6 col-lg-3"><div class="card dato h-100 text-center"><div class="card-body">
+                    <p class="valor">$ 85.437</p><p class="mb-0">total de energía con subsidio</p>
+                </div></div></div>
+                <div class="col-6 col-lg-3"><div class="card dato h-100 text-center"><div class="card-body">
+                    <p class="valor">102 %</p><p class="mb-0">de mi meta de 143,53 kWh</p>
+                </div></div></div>
+            </div>
+            <figure>
+                <img class="img-fluid" src="img/factura.png" alt="Sección de energía de mi factura de EPM: lectura de 28.531 y 28.384, consumo de 147 kWh, valor de 140.881,86 pesos menos subsidio de 55.444,86, total de 85.437 pesos, y gráfica de barras con el histórico de consumo en kWh" width="900">
+                <figcaption>Sección de energía de mi factura de EPM: lectura de 28.531 y 28.384, consumo de 147 kWh, valor de 140.881,86 pesos menos subsidio de 55.444,86, total de 85.437 pesos, y gráfica de barras con el histórico de consumo en kWh</figcaption>
+                <figcaption>Sección de energía de mi factura, sin nombre, dirección ni número de cuenta.</figcaption>
+            </figure>
+            <table class="table table-striped table-bordered table-hover">
+                <caption>Energía facturada en octubre de 2026</caption>
+                <thead>
+                    <tr><th>Concepto</th><th>Valor</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Consumo del mes</td><td>147 kWh</td></tr>
+                    <tr><td>Tarifa</td><td>958,38 COP por kWh</td></tr>
+                    <tr><td>Valor de la energía (147 × 958,38)</td><td>$ 140.881,86</td></tr>
+                    <tr><td>Subsidio (estrato 2)</td><td>$ -55.444,86</td></tr>
+                </tbody>
+                <tfoot>
+                    <tr><th>Total energía</th><td>$ 85.437,00</td></tr>
+                </tfoot>
+            </table>
+            <p>Con el subsidio pago unos <strong>581 COP por kWh</strong> (85.437 ÷ 147). La meta de mi factura es de <strong>143,53 kWh</strong> (4,63 kWh por día) y consumí el 102 % de esa meta: no recibo incentivo (menos del 90 %), pero tampoco recargo (más del 110 %).</p>
+            <div class="progress mb-1" role="progressbar" aria-label="Consumo frente a la meta" aria-valuenow="102" aria-valuemin="0" aria-valuemax="110">
+                <div class="progress-bar bg-warning text-dark" style="width: 92.7%">102 % de la meta</div>
+            </div>
+            <small class="text-muted">La barra llena equivale al 110 %, donde empieza el recargo.</small>
+        </section>
+
+        <section>
+            <h2>Historial de consumo</h2>
+            <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <caption>Consumo de energía que trae la factura y valor pagado</caption>
+                <thead>
+                    <tr><th>Mes</th><th>Consumo (kWh)</th><th>Valor pagado (COP)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Octubre de 2025</td><td>135</td><td>78.463 <span class="badge text-bg-secondary"></span></td></tr>
+                    <tr><td>Abril de 2026</td><td>132</td><td>76.719 <span class="badge text-bg-secondary"></span></td></tr>
+                    <tr><td>Mayo de 2026</td><td>153</td><td>88.924 <span class="badge text-bg-secondary"></span></td></tr>
+                    <tr><td>Junio de 2026</td><td>158</td><td>91.830 <span class="badge text-bg-secondary"></span></td></tr>
+                    <tr><td>Julio de 2026</td><td>158</td><td>91.830 <span class="badge text-bg-secondary"></span></td></tr>
+                    <tr><td>Agosto de 2026</td><td>160</td><td>92.993 <span class="badge text-bg-secondary"></span></td></tr>
+                    <tr><td>Septiembre de 2026</td><td>156</td><td>90.668 <span class="badge text-bg-secondary"></span></td></tr>
+                    <tr><td><strong>Octubre de 2026 (actual)</strong></td><td><strong>147</strong></td><td><strong>85.437</strong> <span class="badge text-bg-success"></span></td></tr>
+                </tbody>
+                <tfoot>
+                    <tr><th>Promedio de los últimos 6 meses</th><td>153</td><td>88.924 <span class="badge text-bg-secondary"></span></td></tr>
+                </tfoot>
+            </table>
+            </div>
+            <div class="alert alert-warning" role="alert">
+                La factura solo muestra los kWh de cada mes. El valor pagado de octubre de 2026 es el real; el de los demás meses lo estimé multiplicando los kWh por 581,20 COP, la tarifa neta de este mes. Es una aproximación, porque la tarifa cambió durante el año.
+            </div>
+        </section>
+
+        <section>
+            <h2>Equipos frente a la factura</h2>
+            <table class="table table-striped table-bordered table-hover">
+                <caption>Proyección mensual de mis equipos y consumo facturado</caption>
+                <thead>
+                    <tr><th>Concepto</th><th>kWh</th><th>Costo con la tarifa de 958,38 (COP)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Proyección de mis 5 equipos (17,083 kWh por semana × 31 ÷ 7)</td><td>75,65</td><td>72.502</td></tr>
+                    <tr><td>Consumo de la factura</td><td>147</td><td>140.882</td></tr>
+                </tbody>
+                <tfoot>
+                    <tr><th>Diferencia sin explicar</th><td>71,35</td><td>68.380</td></tr>
+                </tfoot>
+            </table>
+            <p>Mis cinco equipos explican cerca del <em>51 %</em> del consumo de la factura; el otro <em>49 %</em> (71 kWh) no lo explican. Creo que hay tres razones:</p>
+            <ul class="list-group mb-3">
+                <li class="list-group-item">No registré todos los equipos de la casa: la iluminación, el televisor, el computador, los cargadores y el ventilador también consumen.</li>
+                <li class="list-group-item">Las horas de uso de la tabla son estimadas, y es probable que use los equipos más tiempo del que calculé.</li>
+                <li class="list-group-item">La etiqueta de la nevera da el consumo en condiciones de prueba; en la casa puede ser mayor por el calor, las veces que se abre la puerta y el estado del empaque.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Recomendaciones de ahorro para mi familia</h2>
+            <ol class="list-group list-group-numbered">
+                <li class="list-group-item"><strong>Bajar de 129 kWh al mes para recibir el incentivo.</strong> Hoy consumo 147 kWh y la meta es de 143,53 kWh. Para pasar del 90 % de la meta debo ahorrar unos 18 kWh al mes, o sea unos 4 kWh por semana.</li>
+                <li class="list-group-item"><strong>Usar menos la airfryer.</strong> Con 1450 W es el equipo que más gasta por hora. Si la uso 15 minutos menos de lunes a viernes, ahorro unos 8 kWh al mes. Conviene llenar la canasta y no dejarla prendida en vacío.</li>
+                <li class="list-group-item"><strong>Cuidar la nevera.</strong> Gasta el 41 % de lo que calculé para mis equipos porque nunca se apaga. Debo revisar que la puerta cierre bien, no meter comida caliente y dejarla lejos de la estufa.</li>
+                <li class="list-group-item"><strong>Desconectar lo que no se usa.</strong> La sandwichera, la licuadora, la waflera, el televisor y los cargadores deben quedar desenchufados, como pide el mensaje de EPM en la factura.</li>
+                <li class="list-group-item"><strong>Hacer una lista de todos los equipos.</strong> Para entender los 71 kWh que no explico, voy a anotar la potencia y las horas de los equipos que faltan y revisar el consumo cada semana en el medidor.</li>
+            </ol>
+        </section>
+    </main>
+
+    <footer class="mt-4 text-muted">
+        <p>Fuente: factura de EPM, octubre de 2026. Ingeniería Web I · IU Digital de Antioquia · 2026-2</p>
+    </footer>
+</body>
+</html>

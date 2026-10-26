@@ -1,0 +1,344 @@
+/* Fuentes de Google (si no cargan, el navegador usa la fuente del sistema) */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap");
+
+/* Estilos propios para las 5 páginas. Se cargan DESPUES de Bootstrap para poder cambiar su aspecto. */
+
+:root {
+    --azul: #0b3a82;
+    --azul-claro: #1565d8;
+    --noche: #050b1f;
+    --amarillo: #ffc107;
+    --naranja: #ff9f1a;
+    --texto: #1f2a3d;
+    --borde: #d9e2f2;
+}
+
+html {
+    scroll-behavior: smooth;
+    min-height: 100%;
+    /* Fondo: resplandores de color + cuadrícula sutil + degradado azul noche */
+    background:
+        radial-gradient(circle at 88% 6%, rgba(255, 193, 7, 0.30), transparent 36%),
+        radial-gradient(circle at 8% 92%, rgba(0, 200, 255, 0.22), transparent 40%),
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(160deg, var(--noche) 0%, #0b1f5c 55%, #10347f 100%);
+    background-size: auto, auto, 44px 44px, 44px 44px, auto;
+    background-attachment: fixed;
+    background-color: var(--noche); /* color de respaldo: va despues del shorthand para que no se borre */
+}
+
+body {
+    color: var(--texto);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.7;
+    max-width: 1040px;
+    padding-bottom: 2rem;
+}
+
+h1, h2, h3, h4, legend, .valor, .btn {
+    font-family: "Poppins", "Inter", system-ui, sans-serif;
+}
+
+::selection { background: var(--amarillo); color: #1f2a3d; }
+a { color: var(--azul-claro); font-weight: 500; }
+
+/* ---------- ENCABEZADO (vidrio sobre el fondo) ---------- */
+.encabezado {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.05));
+    /* bg-primary (en el HTML) es el azul de respaldo si este CSS no carga; aquí lo quitamos para ver el vidrio */
+    background-color: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-top: 5px solid var(--amarillo);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-align: center;
+    padding: 2.5rem 1.5rem 1.5rem !important;
+}
+.encabezado h1 {
+    font-size: clamp(1.9rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #fff;
+    background: linear-gradient(90deg, #ffffff 30%, #ffd75e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.encabezado h1::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    margin: 0.7rem auto 0;
+    border-radius: 4px;
+    background: var(--amarillo);
+}
+.encabezado > p {
+    max-width: 640px;
+    margin: 1rem auto 1.5rem;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+/* Menú centrado */
+.encabezado .nav { justify-content: center; }
+.encabezado .nav-link {
+    border-radius: 50rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin: 0.2rem;
+    padding: 0.45rem 1.1rem;
+    transition: background 0.2s, transform 0.2s;
+}
+.encabezado .nav-link:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: translateY(-2px);
+}
+.encabezado .nav-link.active {
+    background: linear-gradient(135deg, var(--amarillo), var(--naranja));
+    color: #1f2a3d !important;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(255, 193, 7, 0.45);
+}
+
+/* ---------- SECCIONES: tarjetas bien definidas y numeradas ---------- */
+main { counter-reset: seccion; }
+
+main > section {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 1.25rem;
+    padding: 2.25rem 1.75rem 1.75rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    text-align: center;
+}
+/* Franja de color arriba de cada sección */
+main > section::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--amarillo), var(--naranja), var(--azul-claro));
+}
+main > section.destacada {
+    background: linear-gradient(180deg, #fff8e1 0%, #ffffff 40%);
+}
+
+main > section > h2 {
+    counter-increment: seccion;
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--azul);
+    margin-bottom: 1.25rem;
+}
+/* Número de la sección en un círculo */
+main > section > h2::before {
+    content: counter(seccion, decimal-leading-zero);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    margin: 0 auto 0.7rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--amarillo), var(--naranja));
+    color: #1f2a3d;
+    font-size: 0.95rem;
+    font-weight: 800;
+    box-shadow: 0 4px 12px rgba(255, 159, 26, 0.45);
+}
+/* Raya corta debajo del título */
+main > section > h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    margin: 0.6rem auto 0;
+    border-radius: 3px;
+    background: var(--azul-claro);
+}
+
+/* Texto centrado y con ancho cómodo de lectura */
+main > section > p {
+    max-width: 72ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+.table-responsive, .table, figure, .progress { margin-left: auto; margin-right: auto; }
+
+/* ---------- TABLAS ---------- */
+.table {
+    --bs-table-border-color: var(--borde);
+    --bs-table-striped-bg: rgba(21, 101, 216, 0.05);
+    --bs-table-hover-bg: rgba(255, 193, 7, 0.20);
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--borde);
+    border-radius: 0.9rem;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+}
+.table-bordered > :not(caption) > * > * { border-width: 0 0 1px 1px; }
+.table-bordered > :not(caption) > * > *:first-child { border-left-width: 0; }
+.table > tbody > tr:last-child > * { border-bottom-width: 0; }
+
+.table caption {
+    caption-side: top;
+    background: #eef3fc;
+    color: var(--azul);
+    font-weight: 700;
+    text-align: center;
+    padding: 0.8rem;
+}
+.table thead th {
+    background: linear-gradient(180deg, var(--azul), #08295c);
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    border-color: rgba(255, 255, 255, 0.15);
+    font-weight: 600;
+}
+.table tbody td:first-child { text-align: left; font-weight: 500; }
+.table tfoot th, .table tfoot td {
+    background: #fff3cd;
+    color: #4a3b00;
+    font-weight: 700;
+    border-top: 2px solid var(--amarillo);
+}
+
+/* ---------- IMÁGENES ---------- */
+img { border-radius: 0.75rem; }
+figure { text-align: center; }
+figure img { border: 4px solid #fff; box-shadow: 0 8px 24px rgba(11, 58, 130, 0.25); }
+figcaption { color: #6c757d; font-size: 0.9rem; font-style: italic; margin-top: 0.6rem; }
+
+/* ---------- TARJETAS DE DATOS ---------- */
+.card {
+    border: 1px solid var(--borde);
+    border-radius: 1rem;
+    background: linear-gradient(180deg, #f6f9ff, #ffffff);
+    box-shadow: 0 4px 16px rgba(11, 58, 130, 0.10);
+}
+.dato { border-top: 4px solid var(--azul-claro); transition: transform 0.25s, box-shadow 0.25s; }
+.dato:hover { transform: translateY(-5px); box-shadow: 0 12px 28px rgba(11, 58, 130, 0.22); }
+.dato .valor {
+    font-size: 2.1rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+    background: linear-gradient(135deg, var(--azul-claro), var(--azul));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.card-body { text-align: center; }
+
+/* ---------- LISTAS, ALERTAS, PROGRESO ---------- */
+.list-group { max-width: 760px; margin: 0 auto 1rem; text-align: left; }
+.list-group-item { border-color: var(--borde); padding: 0.85rem 1.1rem; }
+.list-group-numbered > .list-group-item::before { color: var(--azul-claro); font-weight: 700; }
+
+.alert {
+    border: 0;
+    border-left: 6px solid;
+    border-radius: 0.9rem;
+    text-align: center;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+main > .alert { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25); margin-bottom: 2rem; }
+
+.progress { height: 1.5rem; border-radius: 50rem; background: #e6ecf7; font-weight: 600; }
+
+/* ---------- FORMULARIOS ---------- */
+main > form { counter-reset: paso; }
+fieldset {
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid var(--borde) !important;
+    border-top: 6px solid var(--amarillo) !important;
+    border-radius: 1.25rem !important;
+    padding: 1.75rem !important;
+    margin-bottom: 2rem !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+legend {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--azul);
+    margin-bottom: 1.25rem;
+}
+/* Número del grupo en un círculo, igual que en las secciones */
+legend::before {
+    counter-increment: paso;
+    content: counter(paso);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    margin: 0 auto 0.7rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--amarillo), var(--naranja));
+    color: #1f2a3d;
+    font-size: 0.95rem;
+    font-weight: 800;
+}
+legend .badge { font-family: "Inter", sans-serif; font-size: 0.7rem; vertical-align: middle; }
+
+label { font-weight: 600; margin-bottom: 0.3rem; }
+.form-check-label { font-weight: 400; }
+.form-control, .form-select {
+    border: 1.5px solid #cfd8e6;
+    border-radius: 0.7rem;
+    padding: 0.6rem 0.9rem;
+    background-color: #fafcff;
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--azul-claro);
+    box-shadow: 0 0 0 0.25rem rgba(21, 101, 216, 0.2);
+    background-color: #fff;
+}
+.form-check-input:checked { background-color: var(--azul-claro); border-color: var(--azul-claro); }
+.form-range::-webkit-slider-thumb { background: var(--azul-claro); }
+
+/* Botones */
+main > form { text-align: center; }
+main > form fieldset { text-align: left; }
+.btn {
+    border-radius: 50rem;
+    padding: 0.65rem 1.8rem;
+    font-weight: 600;
+    margin: 0 0.25rem 0.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary {
+    background: linear-gradient(135deg, var(--azul-claro), var(--azul));
+    border: 0;
+    box-shadow: 0 6px 18px rgba(21, 101, 216, 0.5);
+}
+.btn-secondary { background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.5); color: #fff; }
+.btn-secondary:hover { background: rgba(255, 255, 255, 0.28); color: #fff; }
+
+/* ---------- PIE DE PÁGINA ---------- */
+footer {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1.25rem;
+    font-size: 0.9rem;
+}
+footer.text-muted, footer .text-muted { color: rgba(255, 255, 255, 0.7) !important; }
+footer a { color: var(--amarillo); }
+
+/* ---------- CELULAR ---------- */
+@media (max-width: 576px) {
+    main > section { padding: 2rem 1rem 1.25rem; }
+    .encabezado { padding: 2rem 1rem 1rem !important; }
+    .encabezado .nav-link { padding: 0.4rem 0.8rem; font-size: 0.85rem; }
+    fieldset { padding: 1.25rem !important; }
+}

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipos de mi casa</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <!-- Estilos propios: van DESPUES de Bootstrap para poder cambiar su aspecto -->
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="container py-3">
+    <header class="encabezado p-4 mb-4 bg-primary text-white rounded-4 shadow">
+        <h1>Equipos de mi casa</h1>
+        <p>Consumo de una semana en mi casa. Tarifa de mi factura: 958,38 COP por kWh.</p>
+        <nav class="nav nav-pills">
+            <a class="nav-link text-white" href="index.html">Inicio</a>
+            <a class="nav-link text-white active" href="equipos.html">Equipos de mi casa</a>
+            <a class="nav-link text-white" href="mi-factura.html">Mi factura</a>
+            <a class="nav-link text-white" href="registro.html">Registrar un equipo</a>
+            <a class="nav-link text-white" href="encuesta.html">Encuesta</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Consumo por equipo</h2>
+            <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <caption>Consumo semanal de los equipos (horas de uso estimadas)</caption>
+                <thead>
+                    <tr>
+                        <th rowspan="2">Equipo</th>
+                        <th rowspan="2">Potencia (W)</th>
+                        <th colspan="2">Horas de uso por día</th>
+                        <th rowspan="2">kWh en la semana</th>
+                        <th rowspan="2">Costo en la semana (COP)</th>
+                    </tr>
+                    <tr>
+                        <th>Lunes a viernes</th>
+                        <th>Sábado y domingo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Nevera Mabe RMP421FGCC</td><td>42 (promedio)</td><td>24</td><td>24</td><td>7,070</td><td>6.775,75</td></tr>
+                    <tr><td>Airfryer Imusa LF13-M</td><td>1450</td><td>0,5</td><td>1</td><td>6,525</td><td>6.253,43</td></tr>
+                    <tr><td>Sandwichera Imusa SJ331856</td><td>850</td><td>0,25</td><td>0,5</td><td>1,913</td><td>1.832,90</td></tr>
+                    <tr><td>Licuadora Oster BLST4655-013</td><td>700</td><td>0,25</td><td>0,25</td><td>1,225</td><td>1.174,02</td></tr>
+                    <tr><td>Mini waflera WP-MK03</td><td>350</td><td>0</td><td>0,5</td><td>0,350</td><td>335,43</td></tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="4">Total de la semana</th>
+                        <td>17,083</td>
+                        <td>16.371,53</td>
+                    </tr>
+                </tfoot>
+            </table>
+            </div>
+            <!-- alert: un AVISO de color de Bootstrap -->
+            <div class="alert alert-info" role="alert">
+                Fórmula: potencia (W) × horas de uso ÷ 1000 = kWh. Para la nevera se usó el dato de su etiqueta: 30,30 kWh al mes, es decir, 7,07 kWh por semana. Las horas de uso son estimadas.
+            </div>
+        </section>
+
+        <section>
+            <h2>Fotos de las etiquetas</h2>
+            <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover align-middle">
+                <caption>Etiqueta de cada electrodoméstico, de donde saqué la potencia</caption>
+                <thead>
+                    <tr>
+                        <th>Foto de la etiqueta</th>
+                        <th>Equipo</th>
+                        <th>Marca y modelo</th>
+                        <th>Dato de la etiqueta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <figure class="mb-0">
+                                <img class="img-fluid" src="img/nevera.jpeg" alt="Etiqueta amarilla de eficiencia energética de la nevera Mabe RMP421FGCC: 30,30 kWh al mes y clase A" width="200">
+                                <figcaption>Etiqueta de la nevera Mabe</figcaption>
+                            </figure>
+                        </td>
+                        <td>Nevera</td>
+                        <td>Mabe RMP421FGCC</td>
+                        <td>30,30 kWh al mes (clase A); no indica vatios</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <figure class="mb-0">
+                                <img class="img-fluid" src="img/airfryer.jpeg" alt="Etiqueta blanca de la airfryer Imusa serie LF13-M: 120 V, 60 Hz y 1450 W" width="200">
+                                <figcaption>Etiqueta de la airfryer Imusa</figcaption>
+                            </figure>
+                        </td>
+                        <td>Airfryer</td>
+                        <td>Imusa LF13-M</td>
+                        <td>1450 W, 120 V</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <figure class="mb-0">
+                                <img class="img-fluid" src="img/sandwichera.jpeg" alt="Etiqueta blanca de la sandwichera Imusa SJ331856: 127 V, 60 Hz y 850 W" width="200">
+                                <figcaption>Etiqueta de la sandwichera Imusa</figcaption>
+                            </figure>
+                        </td>
+                        <td>Sandwichera</td>
+                        <td>Imusa SJ331856</td>
+                        <td>850 W, 127 V</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <figure class="mb-0">
+                                <img class="img-fluid" src="img/Licuadora.jpeg" alt="Etiqueta en la base de la licuadora Oster BLST4655-013: 127 V, 60 Hz y 700 W" width="200">
+                                <figcaption>Etiqueta de la licuadora Oster</figcaption>
+                            </figure>
+                        </td>
+                        <td>Licuadora</td>
+                        <td>Oster BLST4655-013</td>
+                        <td>700 W, 127 V</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <figure class="mb-0">
+                                <img class="img-fluid" src="img/waflera.jpeg" alt="Etiqueta de la mini waflera modelo WP-MK03: 100-120 V, 50/60 Hz y 350 W" width="200">
+                                <figcaption>Etiqueta de la mini waflera</figcaption>
+                            </figure>
+                        </td>
+                        <td>Mini waflera</td>
+                        <td>WP-MK03</td>
+                        <td>350 W, 100-120 V</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </section>
+
+        <section>
+            <h2>¿Qué equipo gasta más?</h2>
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <div class="card h-100"><div class="card-body">
+                        <h3 class="h5">Nevera <span class="badge text-bg-danger">Mayor consumo</span></h3>
+                        <p class="mb-2">7,070 kWh en la semana</p>
+                        <!-- progress: una BARRA de progreso; el ancho es el porcentaje -->
+                        <div class="progress" role="progressbar" aria-label="Parte de la nevera en el consumo semanal" aria-valuenow="41" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-danger" style="width: 41%">41 %</div>
+                        </div>
+                    </div></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100"><div class="card-body">
+                        <h3 class="h5">Airfryer <span class="badge text-bg-warning">Más gasta por hora</span></h3>
+                        <p class="mb-2">6,525 kWh en la semana</p>
+                        <div class="progress" role="progressbar" aria-label="Parte de la airfryer en el consumo semanal" aria-valuenow="38" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-warning text-dark" style="width: 38%">38 %</div>
+                        </div>
+                    </div></div>
+                </div>
+            </div>
+            <p>La <strong>nevera</strong>: aunque su potencia es baja, está encendida las 24 horas y consume cerca del <em>41 %</em> de la energía de la semana.
+               Le sigue la <strong>airfryer</strong> (38 %): es el equipo que más gasta por cada hora de uso, pero la uso poco.</p>
+            <p>Estos cinco equipos suman unos 76 kWh al mes. Compárelos con el consumo real en la página <a href="mi-factura.html">Mi factura</a>.</p>
+        </section>
+    </main>
+
+    <footer class="mt-4 text-muted">
+        <p>Ingeniería Web I · IU Digital de Antioquia · 2026-2</p>
+    </footer>
+</body>
+</html>
